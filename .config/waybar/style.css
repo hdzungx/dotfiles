@@ -1,0 +1,161 @@
+@import url("mocha.css");
+
+* {
+  border: none;
+  border-radius: 0px;
+  font-family: "JetBrainsMono Nerd Font";
+  font-weight: bold;
+  font-size: 12px;
+  min-height: 10px;
+}
+
+window#waybar {
+  background: transparent;
+  color: @text;
+}
+
+#workspaces,
+#taskbar,
+#custom-music,
+#custom-music-prev,
+#custom-music-play,
+#custom-music-next,
+#clock,
+#cpu,
+#memory,
+#network,
+#custom-volume,
+#custom-microphone,
+#custom-brightness,
+#battery,
+#tray,
+#custom-power {
+  background-color: @surface0;
+  opacity: 1;
+  margin: 5px 0px 5px 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 5px;
+  border-radius: 10px;
+}
+
+#workspaces {
+  margin-left: 10px;
+  padding: 0px;
+}
+
+#workspaces button {
+  color: @lavender;
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0px;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  padding-right: 0px;
+  margin-right: 10px;
+  animation: ws_normal 20s ease-in-out 1;
+}
+
+#workspaces button.active {
+  color: @red;
+  background: @surface1;
+  margin-left: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 5px;
+  animation: ws_active 20s ease-in-out 1;
+  transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#workspaces button:hover {
+  color: @sapphire;
+  animation: ws_hover 20s ease-in-out 1;
+  transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#taskbar {
+  padding: 0px;
+}
+
+#taskbar button {
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0px;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  padding-right: 5px;
+  margin-right: 0px;
+  animation: tb_normal 20s ease-in-out 1;
+}
+
+#taskbar button.active {
+  background: @blue;
+  margin-left: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-right: 5px;
+  animation: tb_active 20s ease-in-out 1;
+  transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#taskbar button:hover {
+  background: @blue;
+  animation: tb_hover 20s ease-in-out 1;
+  transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#custom-music-prev {
+    border-radius: 10px 0 0 10px;
+    margin-right: 0px;
+}
+
+#custom-music {
+    border-radius: 0 10px 10px 0;
+    margin-right: 0px;
+}
+
+#custom-music-play {
+    border-radius: 0;
+    margin-right: 0px;
+}
+
+#custom-music-next {
+    border-radius: 0;
+    margin-right: 0px;
+}
+
+#cpu {
+  border-radius: 10px 0 0 10px;
+  margin-right: 0px;
+}
+
+#memory {
+  border-radius: 0 10px 10px 0;
+}
+
+#custom-volume {
+  border-radius: 10px 0 0 10px;
+  margin-right: 0px;
+}
+
+#custom-microphone {
+  border-radius: 0 10px 10px 0;
+}
+
+#tray menu * {
+  min-height: 16px
+}
+
+#tray menu separator {
+  min-height: 10px
+}
+
+#custom-power {
+  padding-left: 10;
+  padding-right: 10;
+  color: @red;
+}
