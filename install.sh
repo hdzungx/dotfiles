@@ -33,70 +33,98 @@ sudo pacman -Syu --noconfirm
 # Essential packages
 pacman_packages=(
     # Package Management
-    pacman-contrib reflector
+    pacman-contrib reflector 
 
     # System Monitoring & Utilities
-    btop fastfetch lsd bat
+    btop fastfetch lsd bat tree parallel brightnessctl usbutils 
 
     # Notification & Clipboard
-    libnotify clipnotify cliphist
+    libnotify clipnotify cliphist dunst 
 
-    # Window Manager & Display System
-    hyprland waybar swaybg sddm
-    polkit-gnome xdg-desktop-portal xdg-desktop-portal-hyprland 
-    xdg-desktop-portal-wlr xdg-desktop-portal-gtk
+    # Shell & Terminal
+    zsh starship kitty tmux cowsay ranger micro neovim 
 
-    # Networking & VPN
-    networkmanager network-manager-applet openvpn networkmanager-openvpn zenity sshfs
-
-    # Bluetooth
-    bluez bluez-utils blueman
-
-    # Audio
-    pipewire pipewire-pulse wireplumber pavucontrol pamixer
-
-    # System Tools
-    parallel pyenv brightnessctl wl-clipboard os-prober
-
-    # Development Tools
-    base-devel gcc clang make cmake automake fakeroot
-
-    # Shell & Terminal Utilities
-    kitty zsh ranger tmux
-
-    # File Management
-    nemo gvfs ark unrar
-
-    # Appearance & Themes
-    qt5ct qt6ct qt5-graphicaleffects qt5-svg qt5-quickcontrols2 
-    qt5-wayland qt6-wayland
-
-    # Applications
-    firefox neovim dunst hypridle vlc redshift
-
-    # Media & Documents
-    loupe zathura-pdf-poppler imagemagick
-
-    # Input Method (fcitx5)
-    fcitx5 fcitx5-qt fcitx5-gtk fcitx5-unikey
+    # Audio & Bluetooth
+    pipewire pipewire-pulse pipewire-audio pipewire-jack pipewire-alsa wireplumber 
+    pavucontrol pamixer python-pyalsa 
+    blueman bluez bluez-utils 
 
     # Fonts
-    ttf-hack-nerd ttf-jetbrains-mono ttf-jetbrains-mono-nerd noto-fonts-cjk
+    ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-fira-code ttf-iosevka-nerd 
+    ttf-hack-nerd noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra 
+
+    # Input Method (fcitx5)
+    fcitx5 fcitx5-qt fcitx5-gtk fcitx5-unikey 
+
+    # Development Tools
+    automake fakeroot gcc git cmake clang make shellcheck uthash gzip dpkg 
+
+    # Media & Graphics
+    ffmpeg ffmpegthumbnailer imagemagick vlc loupe 
+
+    # Network & SSH
+    openssh sshfs wget netctl openvpn networkmanager networkmanager-openvpn gnome-disk-utility 
+
+    # Arch Linux & AUR Support
+    sudo fakeroot 
+
+    # Compression & File Management
+    zip unzip p7zip unrar ark gparted nemo gvfs 
+
+    # XDG & Desktop Portal
+    xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-wlr xdg-desktop-portal-hyprland 
+
+    # Wayland & Hyprland
+    hyprland waybar swaybg wl-clipboard hypridle wmname qt5-wayland qt6-wayland 
+
+    # Display Manager
+    sddm 
+
+    # NVIDIA Drivers & Vulkan
+    nvidia-dkms nvidia-utils nvidia-settings vulkan-icd-loader 
+    opencl-nvidia libxnvctrl 
+
+    # Theming & UI
+    papirus-icon-theme zenity qt5ct qt6ct qt5-graphicaleffects qt5-svg qt5-quickcontrols2 
+
+    # Power Management
+    upower udiskie 
+
+    # Backup & Restore
+    timeshift 
+
+    # PDF & Document Viewers
+    evince zathura-pdf-poppler 
+
+    # Miscellaneous
+    mat2 playerctl redshift rofimoji wmname polkit-gnome pyenv
 )
 
 # AUR Packages
 aur_packages=(
-    # Wayland utilities
-    rofi-lbonn-wayland-git swaylock-effects-git grimblast-git flameshot-git hyprpicker wlr-randr-git hyprprop wlogout
+    # Package Management
+    update-grub  
 
-    # Appearance & Themes
-    bibata-cursor-theme-bin tela-circle-icon-theme-dracula
+    # Shell & Launcher  
+    rofi-lbonn-wayland-git  
 
-    # Applications
-    telegram-desktop-bin visual-studio-code-bin obsidian spotify  spicetify-cli
+    # Fonts  
+    ttf-meslo-nerd-font-powerlevel10k  
+
+    # Development Tools  
+    visual-studio-code-bin  
+
+    # Media & Graphics  
+    flameshot-git yt-dlp  
+
+    # Theming & UI  
+    bibata-cursor-theme-bin tela-circle-icon-theme-dracula  
+
+    # Wayland & Hyprland  
+    hyprpicker swaylock-effects-git wlr-randr-git hyprprop grimblast-git wlogout
 
     # Misc tools
-    cava cmatrix-git peaclock pipes.sh
+    cava cmatrix-git peaclock pipes.sh obsidian
 )
 
 # Install paru if not present
@@ -119,9 +147,6 @@ for package in "${aur_packages[@]}"; do
   install_aur_package "$package"
 done
 
-. rog.sh
-. nvidia.sh
-
 # Final message
 echo "All packages installed successfully."
 
@@ -132,10 +157,17 @@ sudo systemctl start NetworkManager
 sudo systemctl start bluetooth.service
 sudo systemctl enable sddm.service
 
-# Install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+# Install zsh plugin
+if [[ ! -d $HOME/.oh-my-zsh ]]; then
+  export CHSH='yes'
+  export RUNZSH='no'
+  export KEEP_ZSHRC='yes'
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  # Install zsh-autosuggestions and zsh-syntax-highlighting
+  echo -e "\n\nClone zsh-autosuggestion and zsh-syntax-highlighting\n\n"
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+fi
 
 # Set open in terminal in nemo
 gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty
