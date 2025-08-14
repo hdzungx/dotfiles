@@ -1,0 +1,136 @@
+{
+  "margin-bottom": -5,
+  "margin-left": 2,
+  "margin-right": 2,
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": [
+    "clock#simpleclock",
+  ],
+  "modules-right": [
+    "network",
+    "bluetooth",
+    "pulseaudio",
+    "clock",
+    "backlight",
+    "tray",
+    "battery",
+    "custom/notification",
+    "custom/power",
+  ],
+
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{id}",
+    "all-outputs": true,
+    "disable-scroll": false,
+    "active-only": false,
+  },
+
+  "backlight": {
+    // "device": "acpi_video1",
+    "format": "{icon} {percent}%",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "tooltip": false,
+  },
+
+  "hyprland/window": {
+    "format": "{title}",
+  },
+
+  "tray": {
+    "show-passive-items": true,
+    "spacing": 10,
+  },
+
+  "clock#simpleclock": {
+    "tooltip": false,
+    "format": "{:%H:%M}", // 
+  },
+
+  "clock": {
+    /* "format": " {:L%a %d %b}", */ 
+    "format": " {:%d %b}",
+    "calendar": {
+      "format": {
+        "days": "<span weight='normal'>{}</span>",
+        "months": "<span color='#cdd6f4'><b>{}</b></span>",
+        "today": "<span color='#f38ba8' weight='700'><u>{}</u></span>",
+        "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+        "weeks": "<span color='#a6e3a1'><b>W{}</b></span>",
+      },
+      "mode": "month",
+      "mode-mon-col": 1,
+      "on-scroll": 1,
+    },
+    "tooltip-format": "<span color='#cdd6f4' font='13'><tt><small>{calendar}</small></tt></span>",
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": " muted",
+    "format-icons": {
+      "headphone": "",
+      "default": ["", "", ""],
+    },
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-right": "pavucontrol",
+  },
+
+  "custom/power": {
+    "tooltip": false,
+    "on-click": "wlogout -b 5",
+    "format": "⏻",
+  },
+
+  "custom/notification": {
+    "escape": true,
+    "exec": "swaync-client -swb",
+    "exec-if": "which swaync-client",
+    "format": "{icon}",
+    "format-icons": {
+      "none": "󰅺",
+      "notification": "󰡟",
+      "dnd-none": "󰂛"
+    },
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "return-type": "json",
+    "tooltip": false,
+  },
+
+  "network": {
+    "format-wifi": "{icon} {essid}",
+
+    "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-ethernet": "",
+    "format-disconnected": "󰖪",
+    "tooltip-format": "{ifname} ({ipaddr}/{cidr})  {gwaddr}",
+    "on-click": "~/.config/scripts/connect_network.sh &",
+  },
+
+  "bluetooth": {
+    "format": "󰂯",
+    "format-connected": "󰂯 {device_alias}",
+    "format-disabled": "󰂲",
+    "format-icons": {
+      "disabled": "󰂲"
+    },
+    "on-click": "blueman-manager",
+    "tooltip-format-connected": "{device_alias}\n{device_address}"
+  },
+
+    "battery": {
+        "states": {
+            "good": 85,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-full": "{icon} {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-alt": "{icon} {capacity}%",
+        "format-icons": [" ", " ", " ", " ", " "],
+        "tooltip-format": "{time}",
+        "cursor": false
+    },
+}
