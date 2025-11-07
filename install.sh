@@ -36,28 +36,28 @@ install_aur_package() {
 
 pacman_packages=(
     # Hyprland & Wayland Environment
-    hyprland swww grim slurp swaync waybar rofi rofi-emoji yad hyprshot xdg-desktop-portal-hyprland xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk
+    hyprland swww grim slurp swaync waybar rofi rofi-emoji hyprshot xdg-desktop-portal-hyprland xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk
 
     # System
     brightnessctl network-manager-applet bluez bluez-utils blueman pipewire pipewire-pulse pipewire-audio pipewire-jack pipewire-alsa wireplumber pavucontrol pamixer
         
     # System Utilities and Media
-    kitty nemo gvfs loupe celluloid gnome-text-editor obs-studio ffmpeg cava
+    kitty nemo gvfs loupe gnome-text-editor ffmpeg cava
 
     # Qt & Display Manager Support
     sddm qt5ct qt6ct qt5-wayland qt6-wayland qt6-svg qt6-declarative qt5-quickcontrols2
 
     # System monitoring and fun terminal visuals
-    btop cowsay fastfetch    
+    btop fastfetch    
 
     # Essential utilities
-    make curl wget unzip dpkg fzf eza bat zoxide neovim tmux ripgrep fd stow man openssh netcat
+    make curl wget unzip dpkg fzf eza bat zoxide neovim tmux ripgrep fd stow man openssh
 
     # Shell & customization
     zsh starship
 
     # CTF tools
-    gdb ascii ltrace strace patchelf 
+    gdb ltrace strace patchelf 
 
     # Programming languages
     python3 python-pip
@@ -69,7 +69,7 @@ pacman_packages=(
     discord
     
     # Misc
-    adwaita-fonts noto-fonts noto-fonts-cjk ttf-jetbrains-mono-nerd nwg-look adw-gtk-theme kvantum-qt5 libvips cliphist gnome-characters keepass obsidian yt-dlp
+    adwaita-fonts noto-fonts noto-fonts-cjk ttf-jetbrains-mono-nerd adw-gtk-theme kvantum-qt5 libvips cliphist
 )
 
 aur_packages=(
@@ -80,13 +80,13 @@ aur_packages=(
     firefox telegram-desktop-bin
 
     # Code Editors and IDEs
-    visual-studio-code-bin sublime-text-4
+    visual-studio-code-bin
 
     # System monitoring and fun terminal visuals
     pipes.sh peaclock pokemon-colorscripts cmatrix-git
 
     # Misc
-    bibata-cursor-theme-bin tela-circle-icon-theme-dracula tint
+    bibata-cursor-theme-bin tela-circle-icon-theme-dracula
 )
 
 # Update system
