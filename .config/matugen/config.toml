@@ -1,0 +1,49 @@
+[config]
+
+[templates.kitty]
+input_path = "~/.config/matugen/templates/kitty.conf"
+output_path = "~/.config/kitty/colors.conf"
+
+[templates.waybar]
+input_path = "~/.config/matugen/templates/waybar.css"
+output_path = "~/.config/waybar/colors.css"
+
+[templates.yazi]
+input_path = "~/.config/matugen/templates/yazi.toml"
+output_path = "~/.config/yazi/theme.toml"
+
+[templates.nvim]
+input_path = "~/.config/matugen/templates/nvim.lua"
+output_path = "~/.config/nvim/lua/matugen_colors.lua"
+
+[templates.btop]
+input_path = "~/.config/matugen/templates/btop.theme"
+output_path = "~/.config/btop/themes/matugen.theme"
+
+[templates.rofi]
+input_path = "~/.config/matugen/templates/rofi.rasi"
+output_path = "~/.config/rofi/colors.rasi"
+
+[templates.gtk3]
+input_path = "~/.config/matugen/templates/gtk.css"
+output_path = "~/.config/gtk-3.0/colors.css"
+
+[templates.gtk4]
+input_path = "~/.config/matugen/templates/gtk.css"
+output_path = "~/.config/gtk-4.0/colors.css"
+
+[templates.mako]
+input_path = "~/.config/matugen/templates/mako"
+output_path = "~/.config/mako/config"
+
+[templates.starship]
+input_path = "~/.config/matugen/templates/starship.toml"
+output_path = "~/.config/starship.toml"
+
+[templates.niri]
+input_path = "~/.config/matugen/templates/niri.kdl"
+output_path = "~/.config/niri/colors.kdl"
+
+[templates.swaylock]
+input_path = "~/.config/matugen/templates/swaylock"
+output_path = "~/.config/swaylock/config"

@@ -1,0 +1,83 @@
+configuration {
+    font: "JetBrainsMono Nerd Font 11";
+    show-icons: true;
+    display-drun: " ";
+    drun-display-format: "{name}";
+    disable-history: true;
+    sidebar-mode: false;
+}
+
+@import "colors.rasi"
+
+* {
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+window {
+    background-color: @bg;
+    border:           2px;
+    border-color:     @primary;
+    border-radius:    14px;
+    padding:          16px;
+    width:            35%;
+}
+
+mainbox {
+    spacing:          12px;
+    children:         [ inputbar, listview ];
+}
+
+inputbar {
+    background-color: @bg-alt;
+    border-radius:    8px;
+    padding:          12px;
+    spacing:          10px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    text-color:       @primary;
+}
+
+entry {
+    text-color:       @fg;
+    placeholder:      "Search...";
+    placeholder-color: @secondary;
+}
+
+listview {
+    columns:          1;
+    lines:            7;
+    spacing:          6px;
+    cycle:            true;
+    dynamic:          true;
+    scrollbar:        false;
+}
+
+element {
+    border-radius:    8px;
+    padding:          10px 12px;
+    spacing:          12px;
+}
+
+element normal.normal,
+element alternate.normal {
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+element selected.normal {
+    background-color: @primary;
+    text-color:       @selected-fg;
+}
+
+element-icon {
+    size:             22px;
+    cursor:           inherit;
+}
+
+element-text {
+    cursor:           inherit;
+    vertical-align:   0.5;
+}

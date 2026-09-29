@@ -1,0 +1,25 @@
+[manager]
+cwd = { fg = "#a4c9fe" }
+
+synonyms = { fg = "#bcc7db" }
+
+[status]
+separator_open  = { fg = "#43474e", bg = "#111318" }
+separator_close = { fg = "#43474e", bg = "#111318" }
+
+mode_normal = { fg = "#111318", bg = "#a4c9fe", bold = true }
+mode_select = { fg = "#111318", bg = "#bcc7db", bold = true }
+mode_unset  = { fg = "#111318", bg = "#ffb4ab", bold = true }
+
+progress_label  = { fg = "#00315d", bg = "#a4c9fe" }
+progress_normal = { fg = "#a4c9fe", bg = "#43474e" }
+progress_error  = { fg = "#ffb4ab", bg = "#43474e" }
+
+[filetype]
+rules = [
+    { mime = "image/*", fg = "#d9bde3" },
+    { mime = "video/*", fg = "#bcc7db" },
+    { mime = "audio/*", fg = "#bcc7db" },
+    { mime = "application/zip", fg = "#ffb4ab" },
+    { mime = "application/x-tar", fg = "#ffb4ab" },
+]

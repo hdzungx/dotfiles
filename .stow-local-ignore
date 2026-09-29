@@ -1,0 +1,5 @@
+\.git
+\.gitignore
+^/\.stow-local-ignore
+^/[0-9]_.*\.sh
+^/README.*

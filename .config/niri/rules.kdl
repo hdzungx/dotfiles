@@ -1,0 +1,10 @@
+prefer-no-csd
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+window-rule {
+    geometry-corner-radius 8
+    clip-to-geometry true
+}

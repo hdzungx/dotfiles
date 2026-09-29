@@ -1,0 +1,25 @@
+[manager]
+cwd = { fg = "{{colors.primary.default.hex}}" }
+
+synonyms = { fg = "{{colors.secondary.default.hex}}" }
+
+[status]
+separator_open  = { fg = "{{colors.surface_variant.default.hex}}", bg = "{{colors.background.default.hex}}" }
+separator_close = { fg = "{{colors.surface_variant.default.hex}}", bg = "{{colors.background.default.hex}}" }
+
+mode_normal = { fg = "{{colors.background.default.hex}}", bg = "{{colors.primary.default.hex}}", bold = true }
+mode_select = { fg = "{{colors.background.default.hex}}", bg = "{{colors.secondary.default.hex}}", bold = true }
+mode_unset  = { fg = "{{colors.background.default.hex}}", bg = "{{colors.error.default.hex}}", bold = true }
+
+progress_label  = { fg = "{{colors.on_primary.default.hex}}", bg = "{{colors.primary.default.hex}}" }
+progress_normal = { fg = "{{colors.primary.default.hex}}", bg = "{{colors.surface_variant.default.hex}}" }
+progress_error  = { fg = "{{colors.error.default.hex}}", bg = "{{colors.surface_variant.default.hex}}" }
+
+[filetype]
+rules = [
+    { mime = "image/*", fg = "{{colors.tertiary.default.hex}}" },
+    { mime = "video/*", fg = "{{colors.secondary.default.hex}}" },
+    { mime = "audio/*", fg = "{{colors.secondary.default.hex}}" },
+    { mime = "application/zip", fg = "{{colors.error.default.hex}}" },
+    { mime = "application/x-tar", fg = "{{colors.error.default.hex}}" },
+]

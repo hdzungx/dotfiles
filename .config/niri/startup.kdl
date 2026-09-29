@@ -1,0 +1,17 @@
+environment {
+    QT_QPA_PLATFORM "wayland;xcb"
+    QT_QPA_PLATFORMTHEME "qt6ct"
+    GDK_BACKEND "wayland,x11"
+    MOZ_ENABLE_WAYLAND "1"
+    XMODIFIERS "@im=fcitx"
+    GTK_IM_MODULE "fcitx"
+    QT_IM_MODULE "fcitx"
+}
+
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+spawn-at-startup "awww-daemon"
+spawn-at-startup "sh" "-c" "sleep 1 && awww img ~/Wallpapers/default.jpg && matugen image ~/Wallpapers/default.jpg -m dark --source-color-index 0"
+spawn-at-startup "mako"
+spawn-at-startup "waybar"
+spawn-at-startup "fcitx5" "-d"
+spawn-at-startup "swayidle" "-w" "timeout" "300" "swaylock -f" "timeout" "600" "niri msg action power-off-monitors" "resume" "niri msg action power-on-monitors" "before-sleep" "swaylock -f"

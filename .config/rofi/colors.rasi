@@ -1,0 +1,10 @@
+* {
+    bg:          #111318;
+    bg-alt:      #1d2024;
+    fg:          #e1e2e9;
+    primary:     #a4c9fe;
+    secondary:   #bcc7db;
+    selected:    #a4c9fe;
+    selected-fg: #00315d;
+    urgent:      #ffb4ab;
+}

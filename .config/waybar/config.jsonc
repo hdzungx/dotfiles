@@ -1,0 +1,118 @@
+{
+    "layer": "top",
+    "position": "top",
+    "margin-top": 2,
+    "margin-left": 4,
+    "margin-right": 4,
+    "height": 28,
+    "spacing": 4,
+    "modules-left": ["niri/workspaces", "niri/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "network", "bluetooth", "group/media", "group/hardware", "battery", "idle_inhibitor", "custom/power"],
+    "group/hardware": {
+        "orientation": "horizontal",
+        "modules": ["cpu", "memory", "temperature"]
+    },
+    "group/media": {
+        "orientation": "horizontal",
+        "modules": ["pulseaudio", "pulseaudio#microphone", "backlight"]
+    },
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "",
+            "default": ""
+        }
+    },
+    "niri/window": {
+        "format": "<span>{title}</span>",
+        "max-length": 45
+    },
+    "clock": {
+        "format": "  {:%H:%M   %a, %d/%m}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    },
+    "cpu": {
+        "format": "   {usage}%",
+        "on-click": "kitty btop"
+    },
+    "memory": {
+        "format": "   {percentage}%",
+        "tooltip-format": "{used}GB / {total}GB",
+        "on-click": "kitty btop"
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{icon}  {temperatureC}°C",
+        "format-icons": ["", "", ""],
+        "on-click": "kitty btop"
+    },
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "   Muted",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "pamixer -t"
+    },
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": "  {volume}%",
+        "format-source-muted": "   Muted",
+        "on-click": "pavucontrol -t 4",
+        "on-click-right": "pamixer --default-source -t",
+        "on-scroll-up": "pamixer --default-source -i 5",
+        "on-scroll-down": "pamixer --default-source -d 5"
+    },
+    "backlight": {
+        "format": "{icon}  {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "on-scroll-up": "brightnessctl set 1%+",
+        "on-scroll-down": "brightnessctl set 1%-"
+    },
+    "bluetooth": {
+        "format": "  {status}",
+        "format-connected": "󰂱  {device_alias}",
+        "format-disconnected": "󰂲  Off",
+        "format-disabled": "󰂲  Off",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "kitty bluetoothctl"
+    },
+    "network": {
+        "format-wifi": "   {essid}",
+        "format-ethernet": "󰈀   Ethernet",
+        "format-disconnected": "󰖪   Offline",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "on-click": "kitty nmtui"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰛐",
+            "deactivated": "󰛔"
+        },
+        "tooltip": true,
+        "tooltip-format-activated": "Idle Inhibitor Enabled",
+        "tooltip-format-deactivated": "Idle Inhibitor Disabled"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": "󰂄  {capacity}%",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "custom/power": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "wlogout"
+    }
+}

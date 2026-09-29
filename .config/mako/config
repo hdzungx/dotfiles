@@ -1,0 +1,27 @@
+anchor=top-right
+margin=16,16,0,0
+padding=12
+width=350
+height=150
+border-size=2
+border-radius=8
+layer=overlay
+font=JetBrainsMono Nerd Font 11
+icons=1
+max-icon-size=48
+default-timeout=5000
+ignore-timeout=1
+
+# --- Colors (Matugen) ---
+background-color=#111318
+text-color=#e1e2e9
+border-color=#a4c9fe
+progress-color=over #43474e
+
+[urgency=low]
+border-color=#8d9199
+default-timeout=3000
+
+[urgency=critical]
+border-color=#ffb4ab
+default-timeout=0

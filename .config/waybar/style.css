@@ -1,0 +1,83 @@
+@import "colors.css";
+
+* {
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
+    box-shadow: none;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: @fg;
+}
+
+.modules-left > widget > *,
+.modules-center > widget > *,
+.modules-right > widget > * {
+    background: alpha(@surface, 0.85);
+    color: @on-surface;
+    border-radius: 8px;
+    padding: 0px 10px;
+    margin: 0;
+}
+
+.modules-left > widget > * { margin-right: 4px; }
+.modules-right > widget > * { margin-left: 4px; }
+
+#cpu, #memory, #temperature, #pulseaudio, .microphone, #backlight {
+    background: transparent;
+    padding: 0;
+    margin: 0px 6px;
+}
+
+#workspaces button {
+    background: transparent;
+    color: alpha(@on-surface, 0.5);
+    padding: 0 4px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#workspaces button.active {
+    color: @primary;
+}
+
+#workspaces button:hover {
+    background: transparent;
+    color: @primary;
+    text-shadow: 0 0 5px alpha(@primary, 0.5);
+}
+
+window#waybar empty #window {
+    background: transparent;
+}
+
+#battery.charging { color: @primary; }
+#battery.warning { color: #f9e2af; }
+#battery.critical {
+    color: @error;
+    animation: blink 1s steps(2, start) infinite;
+}
+
+#pulseaudio.muted { color: @error; }
+#cpu.critical, #memory.critical, #temperature.critical { color: @error; }
+#bluetooth.connected { color: @primary; }
+
+#idle_inhibitor.activated {
+    color: @primary;
+}
+
+#custom-power {
+    color: @error;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+@keyframes blink {
+    to {
+        background-color: @error;
+        color: @bg;
+    }
+}
